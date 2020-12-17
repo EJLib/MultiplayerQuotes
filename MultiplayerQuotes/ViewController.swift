@@ -12,6 +12,7 @@ import MultipeerConnectivity
 public var peerID = MCPeerID(displayName: UIDevice.current.name)
 public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
+var players: [String] = []
 
 class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
 
@@ -28,6 +29,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "EL-multiquote")
         mcAdvertiserAssistant?.delegate = self
         mcAdvertiserAssistant?.startAdvertisingPeer()
+        players.append(peerID.displayName)
     }
     
     @IBAction func chooseJoin() {
@@ -49,6 +51,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
+            players.append(peerID.displayName)
         case .connecting:
             print("Connecting: \(peerID.displayName)")
         case .notConnected:
@@ -73,7 +76,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         
     }
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        
+        invitationHandler(true, mcSession)
     }
 }
 
