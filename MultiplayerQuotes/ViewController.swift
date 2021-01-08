@@ -9,10 +9,12 @@
 import UIKit
 import MultipeerConnectivity
 
+var who = ""
+
 public var peerID = MCPeerID(displayName: UIDevice.current.name)
 public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
-var players: [String] = []
+public var players: [String] = []
 
 class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
 
@@ -30,6 +32,8 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         mcAdvertiserAssistant?.delegate = self
         mcAdvertiserAssistant?.startAdvertisingPeer()
         players.append(peerID.displayName)
+        who = "host"
+        print(who)
     }
     
     @IBAction func chooseJoin() {
@@ -37,10 +41,21 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         let mcBrowser = MCBrowserViewController(serviceType: "EL-multiquote", session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
+        who = "joiner"
+        print(who)
     }
 
     //Multipeer functions
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        
+        let decoder = JSONDecoder()
+        do {
+            let p = try decoder.decode([String].self, from: data)
+            players = p
+        } catch let error as NSError {
+            print(error)
+        }
+            
         /*have stuff later
         DispatchQueue.mainmasync { [weak self] in
             //
@@ -51,7 +66,21 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
-            players.append(peerID.displayName)
+            if who == "host" {
+                players.append(peerID.displayName)
+                print(players)
+                //send to connected peers
+                do {
+                    var p: Data? = nil
+                    p =  try JSONSerialization.data(withJSONObject:players, options: .prettyPrinted)
+                    try mcSession?.send(p!, toPeers: mcSession!.connectedPeers, with: .reliable)
+                    print(2)
+                } catch let error as NSError {
+                    let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        present(ac, animated: true)
+                }
+            }
         case .connecting:
             print("Connecting: \(peerID.displayName)")
         case .notConnected:
@@ -62,9 +91,14 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
     }
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
+
+        //at some point make so that it only happens if connected
+        performSegue(withIdentifier: "toWaitingScreen", sender: nil)
+        print("\(who) \(players)")
     }
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
+        
     }
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
         
