@@ -1,5 +1,5 @@
 //
-//  HostingViewController.swift
+//  LobbyViewController.swift
 //  MultiplayerQuotes
 //
 //  Created by student on 12/7/20.
@@ -10,7 +10,8 @@ import UIKit
 
 var timer: Timer? = nil
 
-class HostingViewController: UIViewController {
+class LobbyViewController: UIViewController {
+    
     @IBOutlet var hostLabel: UILabel!
     @IBOutlet var player1: UILabel!
     @IBOutlet var player2: UILabel!
@@ -37,12 +38,10 @@ class HostingViewController: UIViewController {
         
         updateNames()
         
-
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateNames()
             print("timer running")
         }
-
     }
  
     func updateNames() {

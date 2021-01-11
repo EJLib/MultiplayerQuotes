@@ -55,7 +55,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
         } catch let error as NSError {
             print(error)
         }
-            
+        
         /*have stuff later
         DispatchQueue.mainmasync { [weak self] in
             //
@@ -92,9 +92,9 @@ class ViewController: UIViewController, MCSessionDelegate, MCBrowserViewControll
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
 
-        //at some point make so that it only happens if connected
-        performSegue(withIdentifier: "toWaitingScreen", sender: nil)
+        performSegue(withIdentifier: "toLobby", sender: nil)
         print("\(who) \(players)")
+        
     }
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)

@@ -13,7 +13,7 @@
 		3F305CB025797C6300EEF385 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CAE25797C6300EEF385 /* Main.storyboard */; };
 		3F305CB225797C6800EEF385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CB125797C6800EEF385 /* Assets.xcassets */; };
 		3F305CB525797C6800EEF385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */; };
-		3F305CBD257E936D00EEF385 /* HostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F305CBC257E936D00EEF385 /* HostingViewController.swift */; };
+		3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F305CBC257E936D00EEF385 /* LobbyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		3F305CB125797C6800EEF385 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F305CB425797C6800EEF385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F305CB625797C6800EEF385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F305CBC257E936D00EEF385 /* HostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingViewController.swift; sourceTree = "<group>"; };
+		3F305CBC257E936D00EEF385 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 				3F305CA825797C6300EEF385 /* AppDelegate.swift */,
 				3F305CAA25797C6300EEF385 /* SceneDelegate.swift */,
 				3F305CAC25797C6300EEF385 /* ViewController.swift */,
-				3F305CBC257E936D00EEF385 /* HostingViewController.swift */,
+				3F305CBC257E936D00EEF385 /* LobbyViewController.swift */,
 				3F305CAE25797C6300EEF385 /* Main.storyboard */,
 				3F305CB125797C6800EEF385 /* Assets.xcassets */,
 				3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */,
@@ -97,7 +97,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = student;
 				TargetAttributes = {
 					3F305CA425797C6300EEF385 = {
@@ -142,7 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F305CAD25797C6300EEF385 /* ViewController.swift in Sources */,
-				3F305CBD257E936D00EEF385 /* HostingViewController.swift in Sources */,
+				3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
 				3F305CAB25797C6300EEF385 /* SceneDelegate.swift in Sources */,
 			);
@@ -196,6 +196,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +257,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
