@@ -71,6 +71,9 @@ class LobbyViewController: UIViewController {
     
     @IBAction func startButtonPressed() {
         timer?.invalidate()
+        if who == "host" {
+            performSegue(withIdentifier: "toChooseWord", sender: nil)
+        }
     }
     
     

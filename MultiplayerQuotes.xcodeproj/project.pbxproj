@@ -14,6 +14,8 @@
 		3F305CB225797C6800EEF385 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CB125797C6800EEF385 /* Assets.xcassets */; };
 		3F305CB525797C6800EEF385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */; };
 		3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F305CBC257E936D00EEF385 /* LobbyViewController.swift */; };
+		3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */; };
+		3FAC47BC25AE0F4F00724026 /* chooseword.html in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC47BB25AE0F4F00724026 /* chooseword.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		3F305CB425797C6800EEF385 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F305CB625797C6800EEF385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F305CBC257E936D00EEF385 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
+		3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordViewController.swift; sourceTree = "<group>"; };
+		3FAC47BB25AE0F4F00724026 /* chooseword.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = chooseword.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				3F305CAA25797C6300EEF385 /* SceneDelegate.swift */,
 				3F305CAC25797C6300EEF385 /* ViewController.swift */,
 				3F305CBC257E936D00EEF385 /* LobbyViewController.swift */,
+				3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */,
+				3FAC47BB25AE0F4F00724026 /* chooseword.html */,
 				3F305CAE25797C6300EEF385 /* Main.storyboard */,
 				3F305CB125797C6800EEF385 /* Assets.xcassets */,
 				3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */,
@@ -131,6 +137,7 @@
 				3F305CB525797C6800EEF385 /* LaunchScreen.storyboard in Resources */,
 				3F305CB225797C6800EEF385 /* Assets.xcassets in Resources */,
 				3F305CB025797C6300EEF385 /* Main.storyboard in Resources */,
+				3FAC47BC25AE0F4F00724026 /* chooseword.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +150,7 @@
 			files = (
 				3F305CAD25797C6300EEF385 /* ViewController.swift in Sources */,
 				3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */,
+				3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
 				3F305CAB25797C6300EEF385 /* SceneDelegate.swift in Sources */,
 			);
