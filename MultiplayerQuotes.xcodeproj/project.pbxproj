@@ -16,6 +16,7 @@
 		3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F305CBC257E936D00EEF385 /* LobbyViewController.swift */; };
 		3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */; };
 		3FAC47BC25AE0F4F00724026 /* chooseword.html in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC47BB25AE0F4F00724026 /* chooseword.html */; };
+		3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47C225B73FA500724026 /* MPCHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		3F305CBC257E936D00EEF385 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordViewController.swift; sourceTree = "<group>"; };
 		3FAC47BB25AE0F4F00724026 /* chooseword.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = chooseword.html; sourceTree = "<group>"; };
+		3FAC47C225B73FA500724026 /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MultiplayerQuotes-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +69,14 @@
 				3F305CAA25797C6300EEF385 /* SceneDelegate.swift */,
 				3F305CAC25797C6300EEF385 /* ViewController.swift */,
 				3F305CBC257E936D00EEF385 /* LobbyViewController.swift */,
+				3FAC47C225B73FA500724026 /* MPCHandler.swift */,
 				3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */,
 				3FAC47BB25AE0F4F00724026 /* chooseword.html */,
 				3F305CAE25797C6300EEF385 /* Main.storyboard */,
 				3F305CB125797C6800EEF385 /* Assets.xcassets */,
 				3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */,
 				3F305CB625797C6800EEF385 /* Info.plist */,
+				3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */,
 			);
 			path = MultiplayerQuotes;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 				TargetAttributes = {
 					3F305CA425797C6300EEF385 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -152,6 +158,7 @@
 				3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */,
 				3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
+				3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */,
 				3F305CAB25797C6300EEF385 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGA3MHNDHW;
 				INFOPLIST_FILE = MultiplayerQuotes/Info.plist;
@@ -308,6 +316,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = learn.MultiplayerQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MultiplayerQuotes/MultiplayerQuotes-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,6 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGA3MHNDHW;
 				INFOPLIST_FILE = MultiplayerQuotes/Info.plist;
@@ -327,6 +338,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = learn.MultiplayerQuotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MultiplayerQuotes/MultiplayerQuotes-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

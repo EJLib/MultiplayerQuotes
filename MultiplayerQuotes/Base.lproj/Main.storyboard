@@ -24,7 +24,7 @@
                                 <state key="normal" title="Host"/>
                                 <connections>
                                     <action selector="chooseHost" destination="BYZ-38-t0r" eventType="touchUpInside" id="TBi-1d-5Pw"/>
-                                    <segue destination="9VW-qe-hX8" kind="presentation" identifier="toLobby" id="qke-Vi-9g0"/>
+                                    <segue destination="9VW-qe-hX8" kind="presentation" identifier="" id="SjU-YW-GD2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB8-Ac-wSq">
@@ -40,6 +40,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <segue destination="9VW-qe-hX8" kind="presentation" identifier="toLobby" id="fYG-Xe-DAQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,16 +119,17 @@
                         <outlet property="player3" destination="gZc-rw-QwG" id="J9Z-wp-bTg"/>
                         <outlet property="player4" destination="ESE-Tg-4U5" id="PVW-qb-44J"/>
                         <outlet property="startButton" destination="p6m-Og-lQp" id="w85-Lh-eP5"/>
+                        <segue destination="gzR-iA-XJD" kind="presentation" identifier="toWaitingScreen" id="wCH-C7-ce3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="to8-ef-ccO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="788.45577211394311" y="84"/>
         </scene>
-        <!--View Controller-->
+        <!--Waiting Room-->
         <scene sceneID="OfK-aO-Qqf">
             <objects>
-                <viewController id="gzR-iA-XJD" sceneMemberID="viewController">
+                <viewController id="gzR-iA-XJD" customClass="WaitingRoom" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FVP-9e-sk0">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,6 +187,9 @@
             <point key="canvasLocation" x="1472.1139430284859" y="367.19999999999999"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fYG-Xe-DAQ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

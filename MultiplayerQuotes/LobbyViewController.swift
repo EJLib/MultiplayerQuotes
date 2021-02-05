@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 var timer: Timer? = nil
 
-class LobbyViewController: UIViewController {
+class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     
     @IBOutlet var hostLabel: UILabel!
     @IBOutlet var player1: UILabel!
@@ -36,11 +37,8 @@ class LobbyViewController: UIViewController {
             startButton.isEnabled = false
         }
         
-        updateNames()
-        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateNames()
-            print("timer running")
         }
     }
  
@@ -59,10 +57,10 @@ class LobbyViewController: UIViewController {
             self.player2.text = players[2]
         }
         if players.count > 3 {
-            self.player1.text = players[3]
+            self.player3.text = players[3]
         }
         if players.count > 4 {
-            self.player2.text = players[4]
+            self.player4.text = players[4]
         }
         //If someone leaves the button will respond accordinly but the name will still be there- make players array of ""?
         //Though right now people aren't removed from players if they disconnect
@@ -71,11 +69,9 @@ class LobbyViewController: UIViewController {
     
     @IBAction func startButtonPressed() {
         timer?.invalidate()
-        if who == "host" {
-            performSegue(withIdentifier: "toChooseWord", sender: nil)
-        }
+        performSegue(withIdentifier: "toChooseWord", sender: nil)
+        //send message to start (somehow)
     }
-    
     
 }
     
