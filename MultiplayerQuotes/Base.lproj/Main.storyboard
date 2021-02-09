@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="93"/>
+            <point key="canvasLocation" x="-38" y="84"/>
         </scene>
         <!--Lobby View Controller-->
         <scene sceneID="3Kh-V8-yaH">
@@ -112,6 +112,7 @@
                         <viewLayoutGuide key="safeArea" id="lGY-CC-Mi4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VsX-FI-7SN"/>
                     <connections>
                         <outlet property="hostLabel" destination="WMc-j5-FQu" id="rra-JH-GGR"/>
                         <outlet property="player1" destination="lfa-xD-4HW" id="BkW-7P-Fh7"/>

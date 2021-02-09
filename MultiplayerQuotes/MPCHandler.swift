@@ -13,7 +13,7 @@ public var peerID = MCPeerID(displayName: UIDevice.current.name)
 public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 public var mcBrowser: MCBrowserViewController?
-let group2 = DispatchGroup()
+
 
 class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
     
@@ -52,6 +52,9 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 } catch let error as NSError {
                     print(error)
                 }
+                if players.count == 5 {
+                    mcAdvertiserAssistant?.stopAdvertisingPeer()
+                }
             }
         case .connecting:
             print("Connecting: \(peerID.displayName)")
@@ -67,6 +70,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         do {
             let p = try decoder.decode([String].self, from: data)
             players = p
+            print("players: \(players)")
         } catch let error as NSError {
             print(error)
         }
@@ -90,17 +94,18 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
     }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
-        avc.dis()
-        group2.wait()
+        //avc.performSegue(withIdentifier: "toLobby", sender: nil)
+        mcBrowser!.dismiss(animated: true)
         avc.segueToLobby()
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
-        avc.dis()
+        mcBrowser!.dismiss(animated: true)
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, mcSession)
+            //at some point change to let people be declined
     }
 
 }

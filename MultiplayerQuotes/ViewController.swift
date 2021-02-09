@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import MultipeerConnectivity
 
 var who = ""
 var ahandler = MPCHandler()
@@ -20,10 +19,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ahandler.initialize()
     }
-
     
     @IBAction func chooseHost() {
         ahandler.startHost()
@@ -40,14 +37,8 @@ class ViewController: UIViewController {
         print(who)
     }
     
-    func dis() {
-        group2.enter()
-        mcBrowser!.dismiss(animated: true)
-        group2.leave()
-    }
-    
     func segueToLobby() {
-        self.performSegue(withIdentifier: "toLobby", sender: self)
+        self.performSegue(withIdentifier: "toLobby", sender: nil)
         print("\(who) \(players)")
     }
     
