@@ -14,11 +14,13 @@ public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 public var mcBrowser: MCBrowserViewController?
 
+var hvc: ViewController?
 
 class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
     
-    func initialize() {
+    func initialize(host: ViewController) {
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
+        hvc = host
         mcSession?.delegate = self
     }
     
@@ -41,17 +43,11 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
-            if who == "host" {
+            if who == 0 {
                 players.append(peerID.displayName)
                 print(players)
                 //send to connected peers
-                do {
-                    var p: Data? = nil
-                    p =  try JSONSerialization.data(withJSONObject:players, options: .prettyPrinted)
-                    try mcSession?.send(p!, toPeers: mcSession!.connectedPeers, with: .reliable)
-                } catch let error as NSError {
-                    print(error)
-                }
+                sendData(m: players)
                 if players.count == 5 {
                     mcAdvertiserAssistant?.stopAdvertisingPeer()
                 }
@@ -69,8 +65,17 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         let decoder = JSONDecoder()
         do {
             let p = try decoder.decode([String].self, from: data)
-            players = p
-            print("players: \(players)")
+            if p[0] == "segueToWaitingRoom" {
+                print("segueToWaitingRoom")
+                DispatchQueue.main.async { [weak self] in
+                    lvc!.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
+                }
+            } else {
+                players = p
+                print("players: \(players)")
+                who = players.count-1
+                print(who)
+            }
         } catch let error as NSError {
             print(error)
         }
@@ -94,9 +99,8 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
     }
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
-        //avc.performSegue(withIdentifier: "toLobby", sender: nil)
         mcBrowser!.dismiss(animated: true)
-        avc.segueToLobby()
+        hvc!.performSegue(withIdentifier: "toLobby", sender: nil)
     }
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
@@ -108,4 +112,14 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
             //at some point change to let people be declined
     }
 
+}
+
+func sendData(m: [String]) {
+    do {
+        var p: Data? = nil
+        p =  try JSONSerialization.data(withJSONObject: m, options: .prettyPrinted)
+        try mcSession?.send(p!, toPeers: mcSession!.connectedPeers, with: .reliable)
+    } catch let error as NSError {
+        print(error)
+    }
 }

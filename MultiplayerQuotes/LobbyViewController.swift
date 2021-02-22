@@ -11,6 +11,8 @@ import MultipeerConnectivity
 
 var timer: Timer? = nil
 
+var lvc: UIViewController?
+
 class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     
     @IBOutlet var hostLabel: UILabel!
@@ -22,6 +24,8 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lvc = self
 
         hostLabel.text = ""
         player1.text = ""
@@ -29,7 +33,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         player3.text = ""
         player4.text = ""
         
-        if who == "host" {
+        if who == 0 {
             startButton.isHidden = false
             startButton.isEnabled = false
         } else {
@@ -40,6 +44,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateNames()
         }
+        
     }
  
     func updateNames() {
@@ -49,7 +54,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         }
         if players.count > 1 {
             self.player1.text = players[1]
-            if who == "host" {
+            if who == 0 {
                 self.startButton.isEnabled = true
             }
         }
@@ -69,8 +74,10 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     
     @IBAction func startButtonPressed() {
         timer?.invalidate()
-        performSegue(withIdentifier: "toChooseWord", sender: nil)
+        mcAdvertiserAssistant?.stopAdvertisingPeer()
         //send message to start (somehow)
+        sendData(m: ["segueToWaitingRoom"])
+        //performSegue(withIdentifier: "toChooseWord", sender: nil)
     }
     
 }
