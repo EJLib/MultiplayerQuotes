@@ -127,15 +127,15 @@
             </objects>
             <point key="canvasLocation" x="788.45577211394311" y="84"/>
         </scene>
-        <!--Waiting Room-->
+        <!--Waiting Screen View Controller-->
         <scene sceneID="OfK-aO-Qqf">
             <objects>
-                <viewController id="gzR-iA-XJD" customClass="WaitingRoom" sceneMemberID="viewController">
+                <viewController id="gzR-iA-XJD" customClass="WaitingScreenViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FVP-9e-sk0">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for ___ to choose the word." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKJ-ta-jYJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for ___" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKJ-ta-jYJ">
                                 <rect key="frame" x="20" y="152" width="627" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -146,6 +146,9 @@
                         <viewLayoutGuide key="safeArea" id="Glt-eH-YrE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="JKJ-ta-jYJ" id="R6Q-EB-B3R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOs-qG-I0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

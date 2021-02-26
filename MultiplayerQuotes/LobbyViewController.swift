@@ -35,7 +35,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         
         if who == 0 {
             startButton.isHidden = false
-            startButton.isEnabled = false
+            startButton.isEnabled = true //true for testing purposes, change later
         } else {
             startButton.isHidden = true
             startButton.isEnabled = false
@@ -50,7 +50,6 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     func updateNames() {
         if players.count > 0 {
             self.hostLabel.text = "Host:  \(players[0])"
-            self.startButton.isEnabled = false
         }
         if players.count > 1 {
             self.player1.text = players[1]
@@ -75,9 +74,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     @IBAction func startButtonPressed() {
         timer?.invalidate()
         mcAdvertiserAssistant?.stopAdvertisingPeer()
-        //send message to start (somehow)
         sendData(m: ["segueToWaitingRoom"])
-        //performSegue(withIdentifier: "toChooseWord", sender: nil)
     }
     
 }

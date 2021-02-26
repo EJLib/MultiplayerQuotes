@@ -9,9 +9,10 @@
 import UIKit
 
 var who = 9
+var activePlayer = 0
 var ahandler = MPCHandler()
 
-public var players: [String] = []
+var players: [String] = []
 let group1 = DispatchGroup()
 
 class ViewController: UIViewController {

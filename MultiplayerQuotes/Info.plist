@@ -30,7 +30,6 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -41,11 +40,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSLocalNetworkUsageDescription</key>
-    <string>Exchange data with nearby devices running the PeerTrack app.</string>
-    <key>NSBonjourServices</key>
-    <array>
-        <string>_EL-multiquote._tcp</string>
-    </array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Exchange data with nearby devices running the PeerTrack app.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_EL-multiquote._tcp</string>
+	</array>
 </dict>
 </plist>
