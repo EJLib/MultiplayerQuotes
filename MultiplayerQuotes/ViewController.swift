@@ -8,7 +8,7 @@
 
 import UIKit
 
-var who = 9
+var who = -1
 var activePlayer = 0
 var ahandler = MPCHandler()
 
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func chooseHost() {
+        loadQuote()
         ahandler.startHost()
         players.append(peerID.displayName)
         who = 0

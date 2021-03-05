@@ -15,6 +15,7 @@
 		3F305CB525797C6800EEF385 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */; };
 		3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F305CBC257E936D00EEF385 /* LobbyViewController.swift */; };
 		3F3BAF6225E4117B0017477E /* WaitingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BAF6125E4117B0017477E /* WaitingScreenViewController.swift */; };
+		3F3BAF6525ED4F550017477E /* LoadQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BAF6425ED4F550017477E /* LoadQuotes.swift */; };
 		3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */; };
 		3FAC47BC25AE0F4F00724026 /* chooseword.html in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC47BB25AE0F4F00724026 /* chooseword.html */; };
 		3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47C225B73FA500724026 /* MPCHandler.swift */; };
@@ -31,6 +32,7 @@
 		3F305CB625797C6800EEF385 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F305CBC257E936D00EEF385 /* LobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewController.swift; sourceTree = "<group>"; };
 		3F3BAF6125E4117B0017477E /* WaitingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingScreenViewController.swift; sourceTree = "<group>"; };
+		3F3BAF6425ED4F550017477E /* LoadQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadQuotes.swift; sourceTree = "<group>"; };
 		3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseWordViewController.swift; sourceTree = "<group>"; };
 		3FAC47BB25AE0F4F00724026 /* chooseword.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = chooseword.html; sourceTree = "<group>"; };
 		3FAC47C225B73FA500724026 /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
@@ -69,9 +71,10 @@
 			children = (
 				3F305CA825797C6300EEF385 /* AppDelegate.swift */,
 				3F305CAA25797C6300EEF385 /* SceneDelegate.swift */,
+				3F3BAF6425ED4F550017477E /* LoadQuotes.swift */,
+				3FAC47C225B73FA500724026 /* MPCHandler.swift */,
 				3F305CAC25797C6300EEF385 /* ViewController.swift */,
 				3F305CBC257E936D00EEF385 /* LobbyViewController.swift */,
-				3FAC47C225B73FA500724026 /* MPCHandler.swift */,
 				3F3BAF6125E4117B0017477E /* WaitingScreenViewController.swift */,
 				3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */,
 				3FAC47BB25AE0F4F00724026 /* chooseword.html */,
@@ -161,6 +164,7 @@
 				3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */,
 				3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
+				3F3BAF6525ED4F550017477E /* LoadQuotes.swift in Sources */,
 				3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */,
 				3F305CAB25797C6300EEF385 /* SceneDelegate.swift in Sources */,
 				3F3BAF6225E4117B0017477E /* WaitingScreenViewController.swift in Sources */,

@@ -64,16 +64,23 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         let decoder = JSONDecoder()
         do {
-            let p = try decoder.decode([String].self, from: data)
+            var p = try decoder.decode([String].self, from: data)
             if p[0] == "segueToWaitingRoom" {
                 print("segueToWaitingRoom")
                 DispatchQueue.main.async { [weak self] in
                     lvc!.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
                 }
+            } else if p[0] == "quote" {
+                activeWordIndex = Int(p[1])!
+                p.removeSubrange(0...1)
+                quote = p
+                //segue
             } else {
                 players = p
                 print("players: \(players)")
-                who = players.count-1
+                if who == -1 {
+                    who = players.count-1
+                }
                 print(who)
             }
         } catch let error as NSError {
