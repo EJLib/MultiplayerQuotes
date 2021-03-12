@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+var cwvc: UIViewController?
+
 var activeWordIndex: Int = -1
 
 class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
@@ -18,14 +20,19 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cwvc = self
+        
         if let url = Bundle.main.url(forResource: "chooseword", withExtension: "html") {
             
             webView.configuration.userContentController.add(self, name: "selection")
             
             var html = ""
+            
             for i in 0...quote.count-1 {
                 //let modWord = removeInternalQuotes(word: word)
-                html.append("<button onclick=\"window.webkit.messageHandlers.selection.postMessage({selectedWord: \(i)});\">\(quote[i])</button>")
+                if !quote[i].contains("http") {
+                    html.append("<button style=\"font-size: 32px;\" onclick=\"window.webkit.messageHandlers.selection.postMessage({selectedWord: \(i)});\">\(quote[i])</button>")
+                }
             }
             
             webView.loadHTMLString(html, baseURL: url)
@@ -47,7 +54,9 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
         sendQuote.insert("quote", at: 0)
         sendQuote.insert(String(activeWordIndex), at: 1)
         sendData(m: sendQuote)
-        //segue this device
+        DispatchQueue.main.async {
+            cwvc!.performSegue(withIdentifier: "ChooseWordtoFillBlank", sender: nil)
+        }
     }
     /*
     func removeInternalQuotes(word: String) -> String {

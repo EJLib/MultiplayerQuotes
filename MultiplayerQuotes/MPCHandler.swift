@@ -67,14 +67,23 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
             var p = try decoder.decode([String].self, from: data)
             if p[0] == "segueToWaitingRoom" {
                 print("segueToWaitingRoom")
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async {
                     lvc!.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
                 }
             } else if p[0] == "quote" {
                 activeWordIndex = Int(p[1])!
                 p.removeSubrange(0...1)
                 quote = p
-                //segue
+                DispatchQueue.main.async {
+                    wsvc!.performSegue(withIdentifier: "WaitingScreentoFillBlank", sender: nil)
+                }
+            } else if p[0] == "done" {
+                numberPlayersDone += 1
+                if numberPlayersDone == players.count {
+                    DispatchQueue.main.async {
+                        fbvc!.performSegue(withIdentifier: "FillBlanktoVote", sender: nil)
+                    }
+                }
             } else {
                 players = p
                 print("players: \(players)")

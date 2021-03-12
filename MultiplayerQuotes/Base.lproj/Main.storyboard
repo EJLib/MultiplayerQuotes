@@ -148,6 +148,7 @@
                     </view>
                     <connections>
                         <outlet property="label" destination="JKJ-ta-jYJ" id="R6Q-EB-B3R"/>
+                        <segue destination="eoz-Wr-kRc" kind="presentation" identifier="WaitingScreentoFillBlank" id="gJE-l5-Pm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOs-qG-I0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,14 +185,108 @@
                     </view>
                     <connections>
                         <outlet property="webView" destination="v6b-w7-FH3" id="sQ3-Mu-RGi"/>
+                        <segue destination="eoz-Wr-kRc" kind="presentation" identifier="ChooseWordtoFillBlank" id="NeK-E5-DQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dly-fX-vND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1472.1139430284859" y="367.19999999999999"/>
         </scene>
+        <!--Fill Blank View Controller-->
+        <scene sceneID="kRm-e5-TiS">
+            <objects>
+                <viewController id="eoz-Wr-kRc" customClass="FillBlankViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TaQ-Bm-ByD">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fill in the blank:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qd-u8-iSE">
+                                <rect key="frame" x="51" y="20" width="579" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="153-o8-Aca">
+                                <rect key="frame" x="39" y="79" width="602" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-aM-e28">
+                                <rect key="frame" x="51" y="262" width="440" height="39.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for other players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adl-34-P5h">
+                                <rect key="frame" x="173" y="319" width="313" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-GZ-78l">
+                                <rect key="frame" x="531" y="257" width="70" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="playerResponseDone" destination="eoz-Wr-kRc" eventType="touchUpInside" id="2NG-XT-YGB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RCq-Ye-96n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="GE4-GZ-78l" id="HAt-va-NVa"/>
+                        <outlet property="quoteLabel" destination="153-o8-Aca" id="BV9-Hz-vpw"/>
+                        <outlet property="textBox" destination="AOb-aM-e28" id="YDw-TG-GLF"/>
+                        <outlet property="waitingLabel" destination="adl-34-P5h" id="3hm-mN-VUo"/>
+                        <segue destination="1j9-8i-nO4" kind="presentation" identifier="FillBlanktoVote" id="xGs-Ay-2AX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vBM-Wy-1hr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2185.4572713643179" y="8.8000000000000007"/>
+        </scene>
+        <!--Vote View Controller-->
+        <scene sceneID="zud-rE-fq3">
+            <objects>
+                <viewController id="1j9-8i-nO4" customClass="VoteViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NZl-yR-phx">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote with a blank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meE-5Y-2l0">
+                                <rect key="frame" x="35" y="10" width="612" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Nj-Sz-4po">
+                                <rect key="frame" x="35" y="132" width="612" height="223"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q1P-uw-OxX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="quoteLabel" destination="meE-5Y-2l0" id="no9-wr-QvX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hCM-v2-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2889.8050974512744" y="8.8000000000000007"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="NeK-E5-DQA"/>
         <segue reference="fYG-Xe-DAQ"/>
     </inferredMetricsTieBreakers>
     <resources>

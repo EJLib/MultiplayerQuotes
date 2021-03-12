@@ -8,12 +8,16 @@
 
 import UIKit
 
+var wsvc: UIViewController?
+
 class WaitingScreenViewController: UIViewController {
     @IBOutlet var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        wsvc = self
+        
         label.text = "Waiting for \(players[activePlayer])"
         
         // Do any additional setup after loading the view.
