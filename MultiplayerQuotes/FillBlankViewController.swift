@@ -11,6 +11,8 @@ import UIKit
 var playerResponse: String = ""
 var numberPlayersDone = 0
 var fbvc: UIViewController!
+var quoteWithBlank: [String] = []
+var responses: [Int : String] = [:]
 
 class FillBlankViewController: UIViewController, UITextFieldDelegate {
     
@@ -25,7 +27,7 @@ class FillBlankViewController: UIViewController, UITextFieldDelegate {
         fbvc = self
         textBox.delegate = self
         
-        var quoteWithBlank = quote
+        quoteWithBlank = quote
         quoteWithBlank.remove(at: activeWordIndex)
         quoteWithBlank.insert("_____", at: activeWordIndex)
         quoteLabel.text = quoteWithBlank.joined(separator: " ")
@@ -45,7 +47,9 @@ class FillBlankViewController: UIViewController, UITextFieldDelegate {
             doneButton.isEnabled = false
             textBox.isEnabled = false
             waitingLabel.isHidden = false
-            sendData(m: ["done"])
+            responses[-1] = quote[activeWordIndex]
+            responses[who] = playerResponse
+            sendData(m: ["done", String(who), playerResponse])
             numberPlayersDone += 1
             if numberPlayersDone == players.count {
                 DispatchQueue.main.async {

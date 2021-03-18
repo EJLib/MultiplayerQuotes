@@ -78,6 +78,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                     wsvc!.performSegue(withIdentifier: "WaitingScreentoFillBlank", sender: nil)
                 }
             } else if p[0] == "done" {
+                responses[Int(p[1])!] = p[2]
                 numberPlayersDone += 1
                 if numberPlayersDone == players.count {
                     DispatchQueue.main.async {

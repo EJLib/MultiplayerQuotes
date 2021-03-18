@@ -48,7 +48,6 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
             return
         }
         activeWordIndex = aW
-        print(quote[activeWordIndex])
         //send quote, index, and segue all to next screen
         var sendQuote = quote
         sendQuote.insert("quote", at: 0)
