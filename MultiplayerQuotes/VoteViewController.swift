@@ -16,7 +16,7 @@ class VoteViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var quoteLabel: UILabel!
     @IBOutlet var tableView: UITableView!
-    var choices: [Int] = []
+    //var choices: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +34,19 @@ class VoteViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
-        let temp = tempResponses.randomElement()?.key
+        /*let temp = tempResponses.randomElement()?.key
         cell.textLabel?.text = tempResponses[temp!]
         tempResponses.removeValue(forKey: temp!)
-        choices.append(temp!)
+        choices.append(temp!)*/
+        cell.textLabel?.text = "yo"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("test")
-        print(choices)
+        /*print(choices)
         choice = choices[indexPath.row]
-        print(choice)
+        print(choice)*/
     }
     
 
