@@ -66,7 +66,9 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         do {
             var p = try decoder.decode([String].self, from: data)
             if p[0] == "segueToWaitingRoom" {
-                print("segueToWaitingRoom")
+                for _ in 0...players.count {
+                    scores.append(0)
+                }
                 DispatchQueue.main.async {
                     lvc!.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
                 }
@@ -81,9 +83,26 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 responses[Int(p[1])!] = p[2]
                 numberPlayersDone += 1
                 if numberPlayersDone == players.count {
+                    numberPlayersDone = 0
                     DispatchQueue.main.async {
                         fbvc!.performSegue(withIdentifier: "FillBlanktoVote", sender: nil)
                     }
+                }
+            } else if p[0] == "voted" {
+                votes[Int(p[1])!] += 1
+                numberPlayersDone += 1
+                if numberPlayersDone == players.count {
+                    numberPlayersDone = 0
+                    DispatchQueue.main.async {  //not sure I need this
+                        nc.post(name: Notification.Name("showResults"), object: nil)
+                    }
+                }
+            } else if p[0] == "NewRound" {
+                if who == activePlayer {
+                    loadQuote()
+                    svc!.performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
+                } else {
+                    svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
                 }
             } else {
                 players = p
@@ -96,11 +115,6 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         } catch let error as NSError {
             print(error)
         }
-        
-        /*have stuff later
-        DispatchQueue.main.async { [weak self] in
-            //
-        }   */
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {

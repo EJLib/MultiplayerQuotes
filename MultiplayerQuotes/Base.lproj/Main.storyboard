@@ -291,15 +291,110 @@
                     <connections>
                         <outlet property="quoteLabel" destination="meE-5Y-2l0" id="no9-wr-QvX"/>
                         <outlet property="tableView" destination="ft5-S4-4cA" id="DjU-M2-hGe"/>
+                        <segue destination="3wx-JQ-xPC" kind="presentation" identifier="VotetoResults" id="YXh-ki-4rt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCM-v2-LhW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2888.9055472263872" y="8.8000000000000007"/>
         </scene>
+        <!--Results View Controller-->
+        <scene sceneID="eBV-qM-vuk">
+            <objects>
+                <viewController id="3wx-JQ-xPC" customClass="ResultsViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h8J-9J-G5u">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="_____ got  _____  votes!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZl-vG-ZZp">
+                                <rect key="frame" x="20" y="46" width="627" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;quote with answer&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pe-Om-ARE">
+                                <rect key="frame" x="64" y="124" width="553" height="196"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting for everyone to vote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zg3-oI-8zh">
+                                <rect key="frame" x="162" y="169" width="356" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o9C-Ut-SJM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="quoteWithResponse" destination="9Pe-Om-ARE" id="T4c-f8-Cnq"/>
+                        <outlet property="tallyLabel" destination="oZl-vG-ZZp" id="auV-uc-ptV"/>
+                        <outlet property="waitingLabel" destination="Zg3-oI-8zh" id="G87-Bq-EXb"/>
+                        <segue destination="QMM-zV-Ng0" kind="presentation" identifier="VotetoScores" id="mql-Ks-qHZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="341-fc-zxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3645" y="9"/>
+        </scene>
+        <!--Scores View Controller-->
+        <scene sceneID="CTJ-mI-VxS">
+            <objects>
+                <viewController id="QMM-zV-Ng0" customClass="ScoresViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BdI-EE-QMj">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJw-uv-Mx1">
+                                <rect key="frame" x="289" y="32" width="89" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-KV-3PF">
+                                <rect key="frame" x="20" y="74" width="627" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EX7-qH-D1y">
+                                <rect key="frame" x="257" y="320" width="152" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Next Round"/>
+                                <connections>
+                                    <action selector="startNextRound" destination="QMM-zV-Ng0" eventType="touchUpInside" id="DGH-2V-sd7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eed-eu-tcB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="nextRoundButton" destination="EX7-qH-D1y" id="Pd7-n8-cIe"/>
+                        <outlet property="webView" destination="WzM-KV-3PF" id="99b-dV-QRE"/>
+                        <segue destination="gzR-iA-XJD" kind="presentation" identifier="ScorestoWaiting" id="jum-dx-Bac"/>
+                        <segue destination="aH6-2B-jGt" kind="presentation" identifier="ScorestoChooseWord" id="h8d-Wb-LNb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qOv-cv-8j6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4377.6611694152925" y="8.8000000000000007"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NeK-E5-DQA"/>
+        <segue reference="gJE-l5-Pm5"/>
+        <segue reference="h8d-Wb-LNb"/>
+        <segue reference="jum-dx-Bac"/>
         <segue reference="fYG-Xe-DAQ"/>
     </inferredMetricsTieBreakers>
     <resources>

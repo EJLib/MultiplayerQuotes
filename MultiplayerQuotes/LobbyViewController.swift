@@ -10,6 +10,7 @@ import UIKit
 import MultipeerConnectivity
 
 var timer: Timer? = nil
+var scores: [Int] = []
 
 var lvc: UIViewController?
 
@@ -74,6 +75,9 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     @IBAction func startButtonPressed() {
         timer?.invalidate()
         mcAdvertiserAssistant?.stopAdvertisingPeer()
+        for _ in 0...players.count {
+            scores.append(0)
+        }
         sendData(m: ["segueToWaitingRoom"])
     }
     

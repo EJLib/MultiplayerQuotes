@@ -22,7 +22,7 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
         cwvc = self
         
-        if let url = Bundle.main.url(forResource: "chooseword", withExtension: "html") {
+        if let url = Bundle.main.url(forResource: "blank", withExtension: "html") {
             
             webView.configuration.userContentController.add(self, name: "selection")
             

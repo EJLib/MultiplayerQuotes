@@ -29,6 +29,5 @@ func loadQuote() {
             print("\(error)")
         }
     } .resume()
-    //sendData(m: ["yo"])
 }
 
