@@ -14,6 +14,7 @@ public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 public var mcBrowser: MCBrowserViewController?
 
+var loadQuotesGroup = DispatchGroup()
 var hvc: ViewController?
 
 class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
@@ -99,10 +100,13 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 }
             } else if p[0] == "NewRound" {
                 if who == activePlayer {
-                    loadQuote()
-                    svc!.performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
+                    DispatchQueue.main.async {
+                        svc!.performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
+                    }
                 } else {
-                    svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
+                    DispatchQueue.main.async {
+                        svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
+                    }
                 }
             } else {
                 players = p

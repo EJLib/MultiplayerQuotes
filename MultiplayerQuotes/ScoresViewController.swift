@@ -28,8 +28,10 @@ class ScoresViewController: UIViewController {
             activePlayer = 0
         }
         
-        print(scores)
-        print(votes)
+        if who == activePlayer {
+            loadQuote()
+        }
+        
         for i in 0...players.count {
             scores[i] += votes[i]
         }
@@ -58,9 +60,12 @@ class ScoresViewController: UIViewController {
     }
     
     @IBAction func startNextRound() {
-        loadQuote()
         sendData(m: ["NewRound"])
-        performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
+        if who == activePlayer {
+            performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
+        } else {
+            performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
+        }
     }
 
 }

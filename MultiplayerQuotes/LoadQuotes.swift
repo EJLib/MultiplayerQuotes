@@ -17,17 +17,19 @@ struct stringQuote: Codable {
 func loadQuote() {
     let url = URL(string: "https://tronalddump.io/random/quote")!
     URLSession.shared.dataTask(with: url) { (data, reponse, error) in
+        loadQuotesGroup.enter()
         guard let data = data else {
             return
         }
         do{
             let text = try JSONDecoder().decode(stringQuote.self, from: data)
             quote = text.value.components(separatedBy: " ")
-            print(quote)
+            //print(quote)
                 
         } catch let error {
             print("\(error)")
         }
+        loadQuotesGroup.leave()
     } .resume()
 }
 
