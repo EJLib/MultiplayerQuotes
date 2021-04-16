@@ -19,6 +19,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if mcSession != nil {
+            mcSession?.disconnect()
+        }
+        
         ahandler.initialize(host: self)
     }
     

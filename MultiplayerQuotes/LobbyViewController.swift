@@ -22,6 +22,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     @IBOutlet var player3: UILabel!
     @IBOutlet var player4: UILabel!
     @IBOutlet var startButton: UIButton!
+    @IBOutlet var cancelButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         if who == 0 {
             startButton.isHidden = false
             startButton.isEnabled = true //true for testing purposes, change later
+            cancelButton.isHidden = false
+            cancelButton.isEnabled = true
         } else {
             startButton.isHidden = true
             startButton.isEnabled = false
@@ -71,6 +74,14 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         //Though right now people aren't removed from players if they disconnect
     }
     
+    @IBAction func cancelButtonPressed() {
+        timer?.invalidate()
+        mcAdvertiserAssistant?.stopAdvertisingPeer()
+        sendData(m: ["disconnect"])
+        players = []
+        who = -1
+        performSegue(withIdentifier: "LobbytoView", sender: nil)
+    }
     
     @IBAction func startButtonPressed() {
         timer?.invalidate()

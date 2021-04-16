@@ -108,12 +108,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-QJ-NTI">
+                                <rect key="frame" x="20" y="18" width="76" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed" destination="9VW-qe-hX8" eventType="touchUpInside" id="qoo-ub-r0e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lGY-CC-Mi4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="VsX-FI-7SN"/>
                     <connections>
+                        <outlet property="cancelButton" destination="EFC-QJ-NTI" id="jZ9-z7-0UG"/>
                         <outlet property="hostLabel" destination="WMc-j5-FQu" id="rra-JH-GGR"/>
                         <outlet property="player1" destination="lfa-xD-4HW" id="BkW-7P-Fh7"/>
                         <outlet property="player2" destination="63H-3Q-pTY" id="67Q-1B-Muf"/>
@@ -121,11 +131,12 @@
                         <outlet property="player4" destination="ESE-Tg-4U5" id="PVW-qb-44J"/>
                         <outlet property="startButton" destination="p6m-Og-lQp" id="w85-Lh-eP5"/>
                         <segue destination="gzR-iA-XJD" kind="presentation" identifier="toWaitingScreen" id="wCH-C7-ce3"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="LobbytoView" id="3dd-ya-mxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="to8-ef-ccO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788.45577211394311" y="84"/>
+            <point key="canvasLocation" x="715" y="84"/>
         </scene>
         <!--Waiting Screen View Controller-->
         <scene sceneID="OfK-aO-Qqf">
@@ -207,15 +218,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="153-o8-Aca">
-                                <rect key="frame" x="39" y="79" width="602" height="166"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type in Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AOb-aM-e28">
-                                <rect key="frame" x="51" y="262" width="440" height="39.5"/>
+                                <rect key="frame" x="39" y="79" width="440" height="39.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -228,7 +232,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-GZ-78l">
-                                <rect key="frame" x="531" y="257" width="70" height="48"/>
+                                <rect key="frame" x="515" y="74" width="70" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Done"/>
@@ -236,6 +240,13 @@
                                     <action selector="playerResponseDone" destination="eoz-Wr-kRc" eventType="touchUpInside" id="2NG-XT-YGB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quote" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="153-o8-Aca">
+                                <rect key="frame" x="32" y="145" width="602" height="166"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RCq-Ye-96n"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -393,8 +404,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gJE-l5-Pm5"/>
-        <segue reference="h8d-Wb-LNb"/>
-        <segue reference="jum-dx-Bac"/>
+        <segue reference="yIt-n1-rQu"/>
+        <segue reference="wCH-C7-ce3"/>
         <segue reference="fYG-Xe-DAQ"/>
     </inferredMetricsTieBreakers>
     <resources>

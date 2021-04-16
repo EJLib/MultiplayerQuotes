@@ -14,7 +14,6 @@ public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 public var mcBrowser: MCBrowserViewController?
 
-var loadQuotesGroup = DispatchGroup()
 var hvc: ViewController?
 
 class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
@@ -108,6 +107,14 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
                     }
                 }
+            } else if p[0] == "disconnect" {
+                print("here")
+                mcSession!.disconnect()
+                players = []
+                who = -1
+                DispatchQueue.main.async {
+                    lvc!.performSegue(withIdentifier: "LobbytoView", sender: nil)
+                }
             } else {
                 players = p
                 print("players: \(players)")
@@ -151,6 +158,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
 
 func sendData(m: [String]) {
     do {
+        print("sending \(m)")
         var p: Data? = nil
         p =  try JSONSerialization.data(withJSONObject: m, options: .prettyPrinted)
         try mcSession?.send(p!, toPeers: mcSession!.connectedPeers, with: .reliable)
