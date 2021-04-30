@@ -42,9 +42,10 @@ class FillBlankViewController: UIViewController, UITextFieldDelegate {
     @IBAction func playerResponseDone() {
         if textBox.text == "" {
             print("need to type something bud")
-        /*}else if textBox.text!.contains(" ") {
-            print("has to be one word")
-            textBox.text = ""*/
+        } else if textBox.text!.count > 25 {
+            let alert = UIAlertController(title: "Your response is too long", message: "Please keep your response within 25 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         } else {
             playerResponse = textBox.text! //can it be nil?
             doneButton.isEnabled = false
@@ -52,7 +53,7 @@ class FillBlankViewController: UIViewController, UITextFieldDelegate {
             waitingLabel.isHidden = false
             responses[players.count] = quote[activeWordIndex]
             responses[who] = playerResponse
-            sendData(m: ["done", String(who), playerResponse])
+            sendData(m: ["doneover15characters", String(who), playerResponse])
             numberPlayersDone += 1
             if numberPlayersDone == players.count {
                 numberPlayersDone = 0

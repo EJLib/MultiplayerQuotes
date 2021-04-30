@@ -9,7 +9,7 @@
 import Foundation
 import MultipeerConnectivity
 
-public var peerID = MCPeerID(displayName: UIDevice.current.name)
+public var peerID = MCPeerID(displayName: defaults.string(forKey: "Name") ?? UIDevice.current.name)
 public var mcSession: MCSession?
 public var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 public var mcBrowser: MCBrowserViewController?
@@ -43,7 +43,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
-            if who == 0 {
+            if who == 0 {                            //host updates players, then sends
                 players.append(peerID.displayName)
                 print(players)
                 //send to connected peers
@@ -56,6 +56,15 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
             print("Connecting: \(peerID.displayName)")
         case .notConnected:
             print("Not Connected: \(peerID.displayName)")
+            if who == 0 && scores == [] {   //scores == [] indicates in lobby
+                let d = players.firstIndex(of: peerID.displayName)!
+                players.remove(at: d)
+                print(players)
+                sendData(m: players)
+                if players.count == 4 {
+                    mcAdvertiserAssistant?.startAdvertisingPeer()
+                }
+            }
         @unknown default:
             print("Unknown state recived: \(peerID.displayName)")
         }
@@ -70,16 +79,16 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                     scores.append(0)
                 }
                 DispatchQueue.main.async {
-                    lvc!.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
+                    lvc.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
                 }
-            } else if p[0] == "quote" {
+            } else if p[0] == "quoteover15characters" {
                 activeWordIndex = Int(p[1])!
                 p.removeSubrange(0...1)
                 quote = p
                 DispatchQueue.main.async {
                     wsvc!.performSegue(withIdentifier: "WaitingScreentoFillBlank", sender: nil)
                 }
-            } else if p[0] == "done" {
+            } else if p[0] == "doneover15characters" {
                 responses[Int(p[1])!] = p[2]
                 numberPlayersDone += 1
                 if numberPlayersDone == players.count {
@@ -88,7 +97,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         fbvc!.performSegue(withIdentifier: "FillBlanktoVote", sender: nil)
                     }
                 }
-            } else if p[0] == "voted" {
+            } else if p[0] == "votedover15characters" {
                 votes[Int(p[1])!] += 1
                 numberPlayersDone += 1
                 if numberPlayersDone == players.count {
@@ -97,7 +106,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         nc.post(name: Notification.Name("showResults"), object: nil)
                     }
                 }
-            } else if p[0] == "NewRound" {
+            } else if p[0] == "NewRoundover15characters" {
                 if who == activePlayer {
                     DispatchQueue.main.async {
                         svc!.performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
@@ -107,13 +116,13 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
                     }
                 }
-            } else if p[0] == "disconnect" {
-                print("here")
+            } else if p[0] == "disconnectover15characters" {
+                print("disconnect")
                 mcSession!.disconnect()
                 players = []
                 who = -1
                 DispatchQueue.main.async {
-                    lvc!.performSegue(withIdentifier: "LobbytoView", sender: nil)
+                    lvc.performSegue(withIdentifier: "LobbytoView", sender: nil)
                 }
             } else {
                 players = p
@@ -121,7 +130,6 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 if who == -1 {
                     who = players.count-1
                 }
-                print(who)
             }
         } catch let error as NSError {
             print(error)

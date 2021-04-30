@@ -60,7 +60,7 @@ class ScoresViewController: UIViewController {
     }
     
     @IBAction func startNextRound() {
-        sendData(m: ["NewRound"])
+        sendData(m: ["NewRoundover15characters"])
         if who == activePlayer {
             performSegue(withIdentifier: "ScorestoChooseWord", sender: nil)
         } else {

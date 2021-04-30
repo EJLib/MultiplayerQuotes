@@ -53,7 +53,7 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
         activeWordIndex = aW
         //send quote, index, and segue all to next screen
         var sendQuote = quote
-        sendQuote.insert("quote", at: 0)
+        sendQuote.insert("quoteover15characters", at: 0)
         sendQuote.insert(String(activeWordIndex), at: 1)
         sendData(m: sendQuote)
         DispatchQueue.main.async {

@@ -23,6 +23,8 @@
 		3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */; };
 		3FAC47BC25AE0F4F00724026 /* blank.html in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC47BB25AE0F4F00724026 /* blank.html */; };
 		3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47C225B73FA500724026 /* MPCHandler.swift */; };
+		3FE9BD252638966600166EAD /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BD242638966600166EAD /* NameViewController.swift */; };
+		3FE9BD2A263B336300166EAD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BD28263B336300166EAD /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		3FAC47BB25AE0F4F00724026 /* blank.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = blank.html; sourceTree = "<group>"; };
 		3FAC47C225B73FA500724026 /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
 		3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MultiplayerQuotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		3FE9BD242638966600166EAD /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		3FE9BD29263B336300166EAD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				3F3BAF6425ED4F550017477E /* LoadQuotes.swift */,
 				3FAC47C225B73FA500724026 /* MPCHandler.swift */,
 				3F305CAC25797C6300EEF385 /* ViewController.swift */,
+				3FE9BD242638966600166EAD /* NameViewController.swift */,
 				3F305CBC257E936D00EEF385 /* LobbyViewController.swift */,
 				3F3BAF6125E4117B0017477E /* WaitingScreenViewController.swift */,
 				3FAC47B825AE046D00724026 /* ChooseWordViewController.swift */,
@@ -92,6 +97,7 @@
 				3F2F639F261CBADD00133DE1 /* ScoresViewController.swift */,
 				3F305CAE25797C6300EEF385 /* Main.storyboard */,
 				3F305CB125797C6800EEF385 /* Assets.xcassets */,
+				3FE9BD28263B336300166EAD /* Model.xcdatamodeld */,
 				3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */,
 				3F305CB625797C6800EEF385 /* Info.plist */,
 				3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */,
@@ -175,7 +181,9 @@
 				3F3C8722260A3CE900756D1F /* ResultsViewController.swift in Sources */,
 				3F305CAD25797C6300EEF385 /* ViewController.swift in Sources */,
 				3F305CBD257E936D00EEF385 /* LobbyViewController.swift in Sources */,
+				3FE9BD2A263B336300166EAD /* Model.xcdatamodeld in Sources */,
 				3F87F74E25FBF8510051BBC8 /* VoteViewController.swift in Sources */,
+				3FE9BD252638966600166EAD /* NameViewController.swift in Sources */,
 				3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
 				3F3BAF6525ED4F550017477E /* LoadQuotes.swift in Sources */,
@@ -390,6 +398,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3FE9BD28263B336300166EAD /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3FE9BD29263B336300166EAD /* Model.xcdatamodel */,
+			);
+			currentVersion = 3FE9BD29263B336300166EAD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F305C9D25797C6300EEF385 /* Project object */;
 }

@@ -55,7 +55,7 @@ class VoteViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         choice = choices[indexPath.row]   //choice should be 'who' value of response chosen
         votes[choice] += 1
-        sendData(m: ["voted", String(choice)])
+        sendData(m: ["votedover15characters", String(choice)])
         numberPlayersDone += 1
         if numberPlayersDone == players.count {
             numberPlayersDone = 0
