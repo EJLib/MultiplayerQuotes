@@ -446,28 +446,84 @@
                                     <action selector="startNextRound" destination="QMM-zV-Ng0" eventType="touchUpInside" id="DGH-2V-sd7"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKu-n3-Qjn">
+                                <rect key="frame" x="535" y="20" width="112" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="End Game"/>
+                                <connections>
+                                    <action selector="endGame" destination="QMM-zV-Ng0" eventType="touchUpInside" id="eU1-ch-sRz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eed-eu-tcB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="endGameButton" destination="TKu-n3-Qjn" id="Sp5-aG-47p"/>
                         <outlet property="nextRoundButton" destination="EX7-qH-D1y" id="Pd7-n8-cIe"/>
                         <outlet property="webView" destination="WzM-KV-3PF" id="99b-dV-QRE"/>
                         <segue destination="gzR-iA-XJD" kind="presentation" identifier="ScorestoWaiting" id="jum-dx-Bac"/>
                         <segue destination="aH6-2B-jGt" kind="presentation" identifier="ScorestoChooseWord" id="h8d-Wb-LNb"/>
+                        <segue destination="kCT-Vw-5xL" kind="presentation" identifier="ScorestoGameEnd" id="gHS-Ji-0z0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOv-cv-8j6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4377.6611694152925" y="8.8000000000000007"/>
         </scene>
+        <!--Game End View Controller-->
+        <scene sceneID="3Cz-RR-xzh">
+            <objects>
+                <viewController id="kCT-Vw-5xL" customClass="GameEndViewController" customModule="MultiplayerQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZWj-3g-Yja">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Insert name(s) here&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="9aQ-Ts-ray">
+                                <rect key="frame" x="47" y="49" width="557" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="won with ___ points!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUd-yr-bgp">
+                                <rect key="frame" x="47" y="191" width="557" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-Cl-dyg">
+                                <rect key="frame" x="176" y="275" width="299" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Return to Home Screen"/>
+                                <connections>
+                                    <action selector="reset" destination="kCT-Vw-5xL" eventType="touchUpInside" id="bNY-ml-QRt"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="2GH-Br-SnV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fQA-CA-A9t"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="winnerNamesLabel" destination="9aQ-Ts-ray" id="jgz-lV-xAg"/>
+                        <outlet property="winningScoreLabel" destination="qUd-yr-bgp" id="UsX-mZ-IRT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nLZ-Rk-JUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5061.3193403298355" y="8.8000000000000007"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gJE-l5-Pm5"/>
-        <segue reference="yIt-n1-rQu"/>
-        <segue reference="wCH-C7-ce3"/>
+        <segue reference="h8d-Wb-LNb"/>
+        <segue reference="jum-dx-Bac"/>
         <segue reference="fYG-Xe-DAQ"/>
-        <segue reference="jWh-Pp-swY"/>
+        <segue reference="2GH-Br-SnV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>

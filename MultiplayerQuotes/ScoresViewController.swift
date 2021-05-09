@@ -10,11 +10,14 @@ import UIKit
 import WebKit
 
 var svc: UIViewController!
+var winners: [String] = ["segueScoresToGameEnd"]
+var winningScore = 0
 
 class ScoresViewController: UIViewController {
 
     @IBOutlet var webView: WKWebView!
     @IBOutlet var nextRoundButton: UIButton!
+    @IBOutlet var endGameButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +58,8 @@ class ScoresViewController: UIViewController {
         if who == 0 {
             nextRoundButton.isHidden = false
             nextRoundButton.isEnabled = true
+            endGameButton.isHidden = false
+            endGameButton.isEnabled = true
         }
         
     }
@@ -68,4 +73,18 @@ class ScoresViewController: UIViewController {
         }
     }
 
+    @IBAction func endGame() {
+        winningScore = scores.max()!
+        for i in 0...scores.count-2 {
+            if scores[i] == winningScore {
+                winners.append(players[i])
+            }
+        }
+        if scores[scores.count-1] == winningScore {
+            winners.append("Trump")
+        }
+        sendData(m: winners)
+        performSegue(withIdentifier: "ScorestoGameEnd", sender: nil)
+    }
+    
 }

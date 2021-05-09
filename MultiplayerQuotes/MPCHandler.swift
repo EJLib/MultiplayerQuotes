@@ -124,6 +124,11 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 DispatchQueue.main.async {
                     lvc.performSegue(withIdentifier: "LobbytoView", sender: nil)
                 }
+            } else if p[0] == "segueScoresToGameEnd" {
+                winners = p
+                DispatchQueue.main.async {
+                    svc!.performSegue(withIdentifier: "ScorestoGameEnd", sender: nil)
+                }
             } else {
                 players = p
                 print("players: \(players)")

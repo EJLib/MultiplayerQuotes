@@ -25,6 +25,8 @@
 		3FAC47C325B73FA500724026 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC47C225B73FA500724026 /* MPCHandler.swift */; };
 		3FE9BD252638966600166EAD /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BD242638966600166EAD /* NameViewController.swift */; };
 		3FE9BD2A263B336300166EAD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BD28263B336300166EAD /* Model.xcdatamodeld */; };
+		3FE9BD7026446F7800166EAD /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE9BD6F26446F7800166EAD /* GameEndViewController.swift */; };
+		3FE9BD742645C1A500166EAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FE9BD732645C1A500166EAD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MultiplayerQuotes-Bridging-Header.h"; sourceTree = "<group>"; };
 		3FE9BD242638966600166EAD /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		3FE9BD29263B336300166EAD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		3FE9BD6F26446F7800166EAD /* GameEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
+		3FE9BD732645C1A500166EAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +99,13 @@
 				3F87F74D25FBF8510051BBC8 /* VoteViewController.swift */,
 				3F3C8721260A3CE900756D1F /* ResultsViewController.swift */,
 				3F2F639F261CBADD00133DE1 /* ScoresViewController.swift */,
+				3FE9BD6F26446F7800166EAD /* GameEndViewController.swift */,
 				3F305CAE25797C6300EEF385 /* Main.storyboard */,
 				3F305CB125797C6800EEF385 /* Assets.xcassets */,
 				3FE9BD28263B336300166EAD /* Model.xcdatamodeld */,
 				3F305CB325797C6800EEF385 /* LaunchScreen.storyboard */,
 				3F305CB625797C6800EEF385 /* Info.plist */,
+				3FE9BD732645C1A500166EAD /* GoogleService-Info.plist */,
 				3FAC47C725B897C800724026 /* MultiplayerQuotes-Bridging-Header.h */,
 			);
 			path = MultiplayerQuotes;
@@ -166,6 +172,7 @@
 			files = (
 				3F305CB525797C6800EEF385 /* LaunchScreen.storyboard in Resources */,
 				3F305CB225797C6800EEF385 /* Assets.xcassets in Resources */,
+				3FE9BD742645C1A500166EAD /* GoogleService-Info.plist in Resources */,
 				3F305CB025797C6300EEF385 /* Main.storyboard in Resources */,
 				3FAC47BC25AE0F4F00724026 /* blank.html in Resources */,
 			);
@@ -184,6 +191,7 @@
 				3FE9BD2A263B336300166EAD /* Model.xcdatamodeld in Sources */,
 				3F87F74E25FBF8510051BBC8 /* VoteViewController.swift in Sources */,
 				3FE9BD252638966600166EAD /* NameViewController.swift in Sources */,
+				3FE9BD7026446F7800166EAD /* GameEndViewController.swift in Sources */,
 				3FAC47B925AE046D00724026 /* ChooseWordViewController.swift in Sources */,
 				3F305CA925797C6300EEF385 /* AppDelegate.swift in Sources */,
 				3F3BAF6525ED4F550017477E /* LoadQuotes.swift in Sources */,
