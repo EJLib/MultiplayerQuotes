@@ -17,8 +17,8 @@ class GameEndViewController: UIViewController {
         super.viewDidLoad()
 
         winners.remove(at: 0)
-        winnerNamesLabel.text = winners.joined(separator: "   ")
-        winningScoreLabel.text = "won with a score of \(winningScore)"
+        winnerNamesLabel.text = winners.joined(separator: ",   ")
+        winningScoreLabel.text = "won with a score of \(winningScore) points!"
         
     }
     

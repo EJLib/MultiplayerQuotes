@@ -29,7 +29,9 @@ class NameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func set() {
         if textBox.text == "" {
-            print("need to type something bud")
+            let alert = UIAlertController(title: "You need to type something", message: "Sorry dude", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
         } else if textBox.text!.count > 15 {
             let alert = UIAlertController(title: "Your name is too long", message: "Please keep your name within 15 characters", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

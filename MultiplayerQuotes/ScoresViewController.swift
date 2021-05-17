@@ -47,9 +47,9 @@ class ScoresViewController: UIViewController {
             var html = ""
             
             for i in 0...players.count-1 {
-                html.append("<p>\(players[i]):     \(scores[i])</p>")
+                html.append("<p style=\"font-size: 35px;\">\(players[i]):     \(scores[i])</p>")
             }
-            html.append("<p>Trump:     \(scores[players.count])</p>")
+            html.append("<p style=\"font-size: 35px;\">Trump:     \(scores[players.count])</p>")
             
             webView.loadHTMLString(html, baseURL: url)
 
@@ -74,6 +74,7 @@ class ScoresViewController: UIViewController {
     }
 
     @IBAction func endGame() {
+        print(scores.max())
         winningScore = scores.max()!
         for i in 0...scores.count-2 {
             if scores[i] == winningScore {
