@@ -48,7 +48,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 print(players)
                 //send to connected peers
                 sendData(m: players)
-                if players.count == 5 {
+                if players.count == 5 {             //keeps more people from joining
                     mcAdvertiserAssistant?.stopAdvertisingPeer()
                 }
             }
@@ -74,6 +74,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
         let decoder = JSONDecoder()
         do {
             var p = try decoder.decode([String].self, from: data)
+            //from Lobby, creates scores, to WaitingScreen
             if p[0] == "segueToWaitingRoom" {
                 for _ in 0...players.count {
                     scores.append(0)
@@ -81,6 +82,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 DispatchQueue.main.async {
                     lvc.performSegue(withIdentifier: "toWaitingScreen", sender: nil)
                 }
+            //from ChooseWord, sets quote, to FillBlank
             } else if p[0] == "quoteover15characters" {
                 activeWordIndex = Int(p[1])!
                 p.removeSubrange(0...1)
@@ -88,6 +90,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 DispatchQueue.main.async {
                     wsvc!.performSegue(withIdentifier: "WaitingScreentoFillBlank", sender: nil)
                 }
+            //from FillBlank, adds next person's response, checks for all done, to Vote
             } else if p[0] == "doneover15characters" {
                 responses[Int(p[1])!] = p[2]
                 numberPlayersDone += 1
@@ -97,6 +100,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         fbvc!.performSegue(withIdentifier: "FillBlanktoVote", sender: nil)
                     }
                 }
+            //from Vote, adds next player's vote to votes, checks for all done, can set off Results
             } else if p[0] == "votedover15characters" {
                 votes[Int(p[1])!] += 1
                 numberPlayersDone += 1
@@ -106,6 +110,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         nc.post(name: Notification.Name("showResults"), object: nil)
                     }
                 }
+            //from Scores, sends activePlayer to ChooseWord, other to WaitingScreen
             } else if p[0] == "NewRoundover15characters" {
                 if who == activePlayer {
                     DispatchQueue.main.async {
@@ -116,6 +121,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                         svc!.performSegue(withIdentifier: "ScorestoWaiting", sender: nil)
                     }
                 }
+            //from Lobby, disconnects the session and resests some variables, to View
             } else if p[0] == "disconnectover15characters" {
                 print("disconnect")
                 mcSession!.disconnect()
@@ -124,11 +130,13 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
                 DispatchQueue.main.async {
                     lvc.performSegue(withIdentifier: "LobbytoView", sender: nil)
                 }
+            //from Scores, sets winners, to GameEnd
             } else if p[0] == "segueScoresToGameEnd" {
                 winners = p
                 DispatchQueue.main.async {
                     svc!.performSegue(withIdentifier: "ScorestoGameEnd", sender: nil)
                 }
+            //from Lobby, sets players and who as people join (sent by host)
             } else {
                 players = p
                 print("players: \(players)")
@@ -164,7 +172,7 @@ class MPCHandler: NSObject, MCSessionDelegate, MCBrowserViewControllerDelegate, 
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitationHandler(true, mcSession)
-            //at some point change to let people be declined
+            //at some point change to let people be declined?
     }
 
 }

@@ -11,7 +11,6 @@ import MultipeerConnectivity
 
 var timer: Timer? = nil
 var scores: [Int] = []
-//var lobbyHasLoaded = false
 var lvc = LobbyViewController()
 
 class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
@@ -37,7 +36,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         
         if who == 0 {
             startButton.isHidden = false
-            startButton.isEnabled = true //true for testing purposes, change later
+            startButton.isEnabled = false //change to true for testing purposes
             cancelButton.isHidden = false
             cancelButton.isEnabled = true
         } else {
@@ -46,12 +45,8 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         }
         
         hostLabel.text = "Host:  \(players[0])"
-        
-        /*lobbyHasLoaded = true
-        if scores == [] {       //in lobby
-            lvc.names()
-        }*/
  
+        // The names in the lobby update every 1 second
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             self.updateNames()
         }
@@ -61,7 +56,7 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
     func updateNames() {
         if players.count > 1 {
             self.player1.text = players[1]
-            if who == 0 {
+            if who == 0 {                       //can move to increase player minimum
                 self.startButton.isEnabled = true
             }
         } else {
@@ -88,8 +83,6 @@ class LobbyViewController: UIViewController/*, MCSessionDelegate*/ {
         } else {
             self.player4.text = ""
         }
-        //If someone leaves the button will respond accordinly but the name will still be there- make players array of ""?
-        //Though right now people aren't removed from players if they disconnect
     }
 
     @IBAction func cancelButtonPressed() {

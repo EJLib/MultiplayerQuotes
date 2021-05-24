@@ -11,7 +11,7 @@ import WebKit
 
 var cwvc: UIViewController?
 
-var activeWordIndex: Int = -1
+var activeWordIndex: Int = -1       //index of the word removed from quote
 
 class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
 
@@ -22,9 +22,6 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
         cwvc = self
         
-        print("quote is")
-        print(quote)
-        
         if let url = Bundle.main.url(forResource: "blank", withExtension: "html") {
             
             webView.configuration.userContentController.add(self, name: "selection")
@@ -32,8 +29,7 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
             var html = ""
             
             for i in 0...quote.count-1 {
-                //let modWord = removeInternalQuotes(word: word)
-                if !quote[i].contains("http") {
+                if !quote[i].contains("http") {     //removed links
                     html.append("<button style=\"font-size: 32px;\" onclick=\"window.webkit.messageHandlers.selection.postMessage({selectedWord: \(i)});\">\(quote[i])</button>")
                 }
             }
@@ -51,7 +47,7 @@ class ChooseWordViewController: UIViewController, WKNavigationDelegate, WKUIDele
             return
         }
         activeWordIndex = aW
-        //send quote, index, and segue all to next screen
+        //send quote and index, segue all to next screen
         var sendQuote = quote
         sendQuote.insert("quoteover15characters", at: 0)
         sendQuote.insert(String(activeWordIndex), at: 1)
